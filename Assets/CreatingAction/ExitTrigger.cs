@@ -1,0 +1,18 @@
+using UnityEngine;
+
+public class ExitTrigger : MonoBehaviour
+{
+    public GameObject clearUIs;
+
+    //脱出成功時にUIを表示する
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            clearUIs.SetActive(true);
+
+            //カーソルを表示する
+            CursorManager.cursorManagerInstance.UnlockCursor();
+        }        
+    }
+}

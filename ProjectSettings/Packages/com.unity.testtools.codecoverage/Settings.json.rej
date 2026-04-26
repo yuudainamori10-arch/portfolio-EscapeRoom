@@ -1,0 +1,8 @@
+diff a/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json b/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json	(rejected hunks)
+@@ -0,0 +1,5 @@
++{
++    "m_Dictionary": {
++        "m_DictionaryValues": []
++    }
++}
+\ No newline at end of file
