@@ -6,7 +6,6 @@ public class ClickObj : MonoBehaviour, IResetInterface
     [SerializeField] ItemData.Type itemType;
     ItemData item;
 
-    // memo ‚±‚Ìƒƒ\ƒbƒh‚Í‚¢‚ç‚È‚¢‚©‚à¡¡¡
     public void Start()
     {
         //itemType‚É‰‚¶‚Äitem‚ğì¬‚·‚é

@@ -28,11 +28,17 @@ public class InitializationAll : MonoBehaviour
             //アイテムスロットの初期化
             ItemSlotSetting.itemSlotInstance.InitialzedObject();
 
+            //トイレのドアを閉じる
+            RestRoomDoorOpen.openInstance.InitialzedObject();
+
             //脱出口を閉じる
             DoorOpen.doorOpenInstance.InitialzedObject();
 
             //鍵穴をロック状態に戻す
             UnlockObj.unlockInstance.InitialzedObject();
+
+            //タイマーの初期化
+            TimerAction.timerInstance.InitialzedObject();
 
             return true;
         }
@@ -44,4 +50,6 @@ public class InitializationAll : MonoBehaviour
             return false;
         }
     }
+
+    
 }
