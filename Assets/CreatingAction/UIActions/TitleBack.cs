@@ -5,7 +5,7 @@ public class TitleBack : MonoBehaviour
     public GameObject startUIs;
     public GameObject clearUIs;
 
-    public void OnOneMoreGameButtonClicked()
+    public void OnTitleBackButtonClicked()
     {
         clearUIs.SetActive(false);
         startUIs.SetActive(true);

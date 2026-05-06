@@ -9,6 +9,9 @@ public class ExitTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            TimerAction.timerInstance.StopTimer();
+            ClearTimeSettings.timerInstance.DisplayClearTime();
+
             clearUIs.SetActive(true);
 
             //カーソルを表示する
