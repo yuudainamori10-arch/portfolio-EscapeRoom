@@ -7,12 +7,11 @@ public class TimerAction : MonoBehaviour, IResetInterface
     public static TimerAction timerInstance;
     [SerializeField] TextMeshProUGUI timerText;
     float nowTime;
+    string timeupText = "計測不能";
 
     bool startFlag = false;
     bool timeupFlag = false;
     bool clearFlag = false;
-
-    float measurementLimitTime = 3600f; //計測時間の上限を1時間に設定する
 
     void Start()
     {
@@ -33,15 +32,11 @@ public class TimerAction : MonoBehaviour, IResetInterface
         if (startFlag && !timeupFlag && !clearFlag) { 
             nowTime += Time.deltaTime;
 
-            int minites = (int)(nowTime / 60);
-            int second = (int)(nowTime % 60);
-            int millisecond = (int)((nowTime * 10) % 10);
-            timerText.text = $"{minites.ToString("00")}:{second.ToString("00")}.{millisecond.ToString("0")}";
+            timerText.text = BestTimeAdministrator.ConvertTimerText(nowTime);
 
-            if (nowTime >= measurementLimitTime)
+            if (timerText.text == timeupText)
             {
                 timeupFlag = true;
-                timerText.text = "計測不能";
             }
         }
     }

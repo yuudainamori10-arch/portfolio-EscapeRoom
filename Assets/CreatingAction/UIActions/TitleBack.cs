@@ -8,6 +8,9 @@ public class TitleBack : MonoBehaviour
     public void OnTitleBackButtonClicked()
     {
         clearUIs.SetActive(false);
+
+        BestTimeSettings.bestTimeInstance.DisplayBestTime();
+
         startUIs.SetActive(true);
     }
 }

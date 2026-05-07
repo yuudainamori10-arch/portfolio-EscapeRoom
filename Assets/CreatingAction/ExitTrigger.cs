@@ -11,6 +11,7 @@ public class ExitTrigger : MonoBehaviour
         {
             TimerAction.timerInstance.StopTimer();
             ClearTimeSettings.timerInstance.DisplayClearTime();
+            BestTimeAdministrator.SetBestTime(TimerAction.timerInstance.GetTimer());
 
             clearUIs.SetActive(true);
 
