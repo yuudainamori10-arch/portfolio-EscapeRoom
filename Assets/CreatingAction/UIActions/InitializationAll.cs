@@ -40,6 +40,21 @@ public class InitializationAll : MonoBehaviour
             //タイマーの初期化
             TimerAction.timerInstance.InitialzedObject();
 
+            //脱出用のカギをしまった箱の暗証番号作成
+            PasswordManagers.passwordInstance.InitialzedObject();
+
+            //引き出しの初期化
+            DrawerOpen.drawerOpenInstance.InitialzedObject();
+
+            //鍵の入った箱のふたを閉める
+            BoxLidStateManagement.boxLidStateManagementInstance.InitialzedObject();
+
+            //Mystery1の設定を初期化
+            ZoomCamera.zoomCameraInstance.InitialzedObject();
+
+            //脱出用のカギをしまった箱のダイヤルを初期化
+            EscapeKeyBoxDisplay.keyBoxDisplayInstance.InitialzedObject();
+
             return true;
         }
         catch(Exception ex)

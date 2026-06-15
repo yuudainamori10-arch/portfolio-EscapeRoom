@@ -6,9 +6,6 @@ public class RestRoomDoorOpen : MonoBehaviour, IResetInterface
     Animator animator;
     public static RestRoomDoorOpen openInstance;
     private bool openEnableFlag = true; //ドアが閉まっているときをtrue、開いているときをfalse
-    Collider[] parentColliders;
-    Collider[] colliders;
-
     private void Awake()
     {
         if (openInstance is null)
@@ -17,8 +14,6 @@ public class RestRoomDoorOpen : MonoBehaviour, IResetInterface
         }
 
         animator = GetComponent<Animator>();
-        parentColliders = GetComponentsInParent<Collider>(); ;
-        colliders = GetComponentsInChildren<Collider>();
     }
 
     public void ExcecuteDoorAction()

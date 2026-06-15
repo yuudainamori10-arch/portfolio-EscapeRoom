@@ -1,11 +1,8 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class FPSController : MonoBehaviour
 {
-    float x, z;
-
     public GameObject cam;
     Quaternion cameraRot, characterRot;
     float Xsensityvity = 1f, Ysensityvity = 1f;
