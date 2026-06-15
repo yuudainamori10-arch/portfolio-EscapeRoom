@@ -44,7 +44,6 @@ public class SlotDisplaySettings : MonoBehaviour
     {
         itemIcon.sprite = item.sprite;
         itemIcon.gameObject.SetActive(true);
-        Debug.Log("test:"+itemIcon);
     }
 
     //アイテム選択できるか判定する
