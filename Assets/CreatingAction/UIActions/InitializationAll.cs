@@ -43,6 +43,9 @@ public class InitializationAll : MonoBehaviour
             //脱出用のカギをしまった箱の暗証番号作成
             Mystery1Manager.passwordInstance.InitialzedObject();
 
+            //メモと入力欄の色・メモの割り当てを決め、メモを配置する（パスワード作成後に呼ぶ）
+            MemoManager.memoInstance.InitialzedObject();
+
             //引き出しの初期化
             DrawerOpen.drawerOpenInstance.InitialzedObject();
 

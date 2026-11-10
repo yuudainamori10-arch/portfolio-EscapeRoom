@@ -4,6 +4,7 @@ public class Mystery2BoxLidStateManagement : MonoBehaviour, IResetInterface
 {
     public static Mystery2BoxLidStateManagement boxLidStateManagementInstance;
     Animator animator;
+    [SerializeField] MemoObject memo; //箱の中のメモ（ふたが開くまで取れない）
 
     private void Awake()
     {
@@ -23,5 +24,11 @@ public class Mystery2BoxLidStateManagement : MonoBehaviour, IResetInterface
     public void OpenLid()
     {
         animator.Play("OpenLid", 0);
+
+        //ふたが開いたらメモを取れるようにする
+        if (memo != null)
+        {
+            memo.SetPickable(true);
+        }
     }
 }
