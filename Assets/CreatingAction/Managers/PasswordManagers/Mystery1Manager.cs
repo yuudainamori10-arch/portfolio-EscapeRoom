@@ -19,10 +19,11 @@ public class Mystery1Manager : MonoBehaviour, IResetInterface
     {
         var rnd = new System.Random();
 
-        string firstDigit = rnd.Next(0, 9).ToString();
-        string secondDigit = rnd.Next(0, 9).ToString();
-        string thirdDigit = rnd.Next(0, 9).ToString();
-        string fourthDigit = rnd.Next(0, 9).ToString();
+        //Nextの上限は含まれないため10を指定して0～9にする
+        string firstDigit = rnd.Next(0, 10).ToString();
+        string secondDigit = rnd.Next(0, 10).ToString();
+        string thirdDigit = rnd.Next(0, 10).ToString();
+        string fourthDigit = rnd.Next(0, 10).ToString();
 
         correctPassword = firstDigit + secondDigit + thirdDigit + fourthDigit;
         Debug.Log("Mystery1キーボックスのパスワード：" + correctPassword);
@@ -36,5 +37,11 @@ public class Mystery1Manager : MonoBehaviour, IResetInterface
         }
 
         return false;
+    }
+
+    //パスワードの指定した桁（0～3）の数字を返す
+    public string GetDigit(int digitIndex)
+    {
+        return correctPassword[digitIndex].ToString();
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ public class SlotDisplaySettings : MonoBehaviour
     public static SlotDisplaySettings slotDisplayInstance;
     ItemData itemData;
     Image itemIcon;
+    TextMeshProUGUI memoText;
     [SerializeField] GameObject backgroundPanel;
 
     private void Awake()
@@ -19,6 +21,9 @@ public class SlotDisplaySettings : MonoBehaviour
         //アイテムスロットに表示するアイコンの初期設定
         itemIcon = transform.Find("ItemIcon").GetComponent<Image>();
         Debug.Log(itemIcon + "を表示する");
+
+        //メモの数字を表示するテキスト（ItemIconの子）
+        memoText = itemIcon.transform.Find("MemoText").GetComponent<TextMeshProUGUI>();
     }
 
     //アイテムスロットが空か判定する
@@ -42,7 +47,20 @@ public class SlotDisplaySettings : MonoBehaviour
     //アイテムスロットの表示を変更する
     private void UpdateImage(ItemData item)
     {
-        itemIcon.sprite = item.sprite;
+        if (item.type == ItemData.Type.Memo)
+        {
+            //メモは黒い背景に色付きの数字を表示する
+            itemIcon.sprite = null;
+            itemIcon.color = Color.black;
+            memoText.text = item.memoNumber;
+            memoText.color = item.memoColor;
+        }
+        else
+        {
+            itemIcon.sprite = item.sprite;
+            itemIcon.color = Color.white;
+            memoText.text = string.Empty;
+        }
         itemIcon.gameObject.SetActive(true);
     }
 
@@ -84,6 +102,8 @@ public class SlotDisplaySettings : MonoBehaviour
     private void EraseImage()
     {
         itemIcon.sprite = null;
+        itemIcon.color = Color.white;
+        memoText.text = string.Empty;
         itemIcon.gameObject.SetActive(false);
     }
 }

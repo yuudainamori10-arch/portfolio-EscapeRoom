@@ -114,5 +114,11 @@ public class EscapeKeyBoxDisplay : MonoBehaviour, IResetInterface
         secondDigit.text = defaultNumber;
         thirdDigit.text = defaultNumber;
         fourthDigit.text = defaultNumber;
+
+        //入力欄の文字色をメモの色に合わせる（MemoManagerの初期化後に呼ぶこと）
+        firstDigit.color = MemoManager.memoInstance.GetDigitColor(0);
+        secondDigit.color = MemoManager.memoInstance.GetDigitColor(1);
+        thirdDigit.color = MemoManager.memoInstance.GetDigitColor(2);
+        fourthDigit.color = MemoManager.memoInstance.GetDigitColor(3);
     }
 }
