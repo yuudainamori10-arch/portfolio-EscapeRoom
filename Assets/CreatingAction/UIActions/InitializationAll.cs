@@ -41,19 +41,34 @@ public class InitializationAll : MonoBehaviour
             TimerAction.timerInstance.InitialzedObject();
 
             //脱出用のカギをしまった箱の暗証番号作成
-            PasswordManagers.passwordInstance.InitialzedObject();
+            Mystery1Manager.passwordInstance.InitialzedObject();
 
             //引き出しの初期化
             DrawerOpen.drawerOpenInstance.InitialzedObject();
 
             //鍵の入った箱のふたを閉める
-            BoxLidStateManagement.boxLidStateManagementInstance.InitialzedObject();
-
+            Mystery2BoxLidStateManagement.boxLidStateManagementInstance.InitialzedObject();
+            
             //Mystery1の設定を初期化
-            ZoomCamera.zoomCameraInstance.InitialzedObject();
+            Mystery1ZoomCamera.zoomCameraInstance.InitialzedObject();
+
+            //Mystery2の設定を初期化
+            Mystery2ZoomCamera.zoomCameraInstance.InitialzedObject();
 
             //脱出用のカギをしまった箱のダイヤルを初期化
             EscapeKeyBoxDisplay.keyBoxDisplayInstance.InitialzedObject();
+
+            //Mystery2：時計の時刻とメモボックスの暗証番号を作成（針の設定より先に呼ぶ）
+            Mystery2Manager.passwordInstance.InitialzedObject();
+
+            //Mystery2：壁掛け時計の針を時刻に合わせる
+            WallClockSettings.wallClockInstance.InitialzedObject();
+
+            //Mystery2：メモボックスのダイヤルを初期化
+            Mystery2MemoBoxDisplay.keyBoxDisplayInstance.InitialzedObject();
+
+            //Mystery2：壁掛け時計の拡大表示を初期化
+            WallClockStateManagement.wallClockZoomInstance.InitialzedObject();
 
             return true;
         }

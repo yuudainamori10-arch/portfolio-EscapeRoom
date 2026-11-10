@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
 
-public class PasswordManagers : MonoBehaviour, IResetInterface
+public class Mystery1Manager : MonoBehaviour, IResetInterface
 {
     string correctPassword = string.Empty;
-    public static PasswordManagers passwordInstance;
-    [SerializeField] private DrawerOpen target;
+    public static Mystery1Manager passwordInstance;
 
     private void Awake()
     {
@@ -26,7 +25,7 @@ public class PasswordManagers : MonoBehaviour, IResetInterface
         string fourthDigit = rnd.Next(0, 9).ToString();
 
         correctPassword = firstDigit + secondDigit + thirdDigit + fourthDigit;
-        Debug.Log("キーボックスのパスワード：" + correctPassword);
+        Debug.Log("Mystery1キーボックスのパスワード：" + correctPassword);
     }
 
     public bool PasswordCompatison(string userInputPassword)

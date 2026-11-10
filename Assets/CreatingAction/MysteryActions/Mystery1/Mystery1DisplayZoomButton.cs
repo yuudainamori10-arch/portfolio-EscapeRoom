@@ -1,7 +1,7 @@
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class DisplayZoomButton : MonoBehaviour
+public class Mystery1DisplayZoomButton : MonoBehaviour
 {
     [SerializeField] GameObject zoomButton;
 

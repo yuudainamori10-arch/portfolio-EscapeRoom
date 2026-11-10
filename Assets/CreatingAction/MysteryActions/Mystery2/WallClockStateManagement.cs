@@ -1,51 +1,42 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ZoomCamera : MonoBehaviour, IResetInterface
+//壁掛け時計の拡大表示を制御する（時計はアイテムとして取得できず、拡大して見るだけ）
+//拡大ボタンUIにアタッチする。プレイヤー接近時のボタン表示はMystery2DisplayZoomButton、
+//拡大終了はMystery2ZoomEndCameraを流用する
+public class WallClockStateManagement : MonoBehaviour, IResetInterface
 {
-    public static ZoomCamera zoomCameraInstance;
+    public static WallClockStateManagement wallClockZoomInstance;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera zoomCamera;
     [SerializeField] private GameObject centerPoint;
+    [SerializeField] GameObject zoomButton;
     [SerializeField] GameObject zoomEndButton;
 
     private void Awake()
     {
-        if (zoomCameraInstance is null)
+        if (wallClockZoomInstance is null)
         {
-            zoomCameraInstance = this;
+            wallClockZoomInstance = this;
         }
     }
 
     void Update()
     {
-        //�g��{�^���̃r���{�[�h�ݒ�
+        //拡大ボタンのビルボード設定
         Vector3 p = mainCamera.transform.position;
         p.y = transform.position.y;
         transform.LookAt(p);
         transform.Rotate(0, 180, 0);
 
-
+        //拡大中は拡大カメラからのクリックで拡大終了ボタンを押せるようにする
         if (zoomCamera.gameObject.activeInHierarchy && Input.GetMouseButtonDown(0))
         {
             ClickAction();
         }
     }
 
-    public void ChangeZoomCamera()
-    {
-        Debug.Log("�g��{�^���������܂���");
-        if (mainCamera != null && zoomCamera != null)
-        {
-            mainCamera.gameObject.SetActive(false);
-            zoomCamera.gameObject.SetActive(true);
-            centerPoint.SetActive(false);
-            zoomEndButton.SetActive(true);
-            CursorManager.cursorManagerInstance.UnlockCursor();
-        }
-    }
-
-    public void ClickAction()
+    private void ClickAction()
     {
         Ray ray = zoomCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -59,11 +50,25 @@ public class ZoomCamera : MonoBehaviour, IResetInterface
         }
     }
 
+    public void ChangeZoomCamera()
+    {
+        if (mainCamera != null && zoomCamera != null)
+        {
+            mainCamera.gameObject.SetActive(false);
+            zoomCamera.gameObject.SetActive(true);
+            centerPoint.SetActive(false);
+            zoomButton.SetActive(false);
+            zoomEndButton.SetActive(true);
+            CursorManager.cursorManagerInstance.UnlockCursor();
+        }
+    }
+
     public void InitialzedObject()
     {
         zoomCamera.gameObject.SetActive(false);
         mainCamera.gameObject.SetActive(true);
         centerPoint.SetActive(true);
+        zoomButton.SetActive(false);
         zoomEndButton.SetActive(false);
     }
 }

@@ -3,18 +3,17 @@ using UnityEngine.EventSystems;
 
 public class FPSController : MonoBehaviour
 {
-    public GameObject cam;
+    [SerializeField] private Camera mainCamera;
     Quaternion cameraRot, characterRot;
     float Xsensityvity = 1f, Ysensityvity = 1f;
     float minX = -90f, maxX = 90f;
 
     void Start()
     {
-        cameraRot = cam.transform.localRotation;
+        cameraRot = mainCamera.transform.localRotation;
         characterRot = transform.localRotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float xRot = Input.GetAxis("Mouse X") * Ysensityvity;
@@ -26,7 +25,7 @@ public class FPSController : MonoBehaviour
         //Updateの中で作成した関数を呼ぶ
         cameraRot = ClampRotation(cameraRot);
 
-        cam.transform.localRotation = cameraRot;
+        mainCamera.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
 
         //Escapeボタンでカーソルを表示する
@@ -36,7 +35,7 @@ public class FPSController : MonoBehaviour
         }
         
 
-        if (Input.GetMouseButtonDown(0))
+        if (mainCamera.gameObject.activeInHierarchy && Input.GetMouseButtonDown(0))
         {
             ClickAction();
         }
@@ -44,8 +43,7 @@ public class FPSController : MonoBehaviour
 
     public void ClickAction()
     {
-        Camera camera = cam.GetComponent<Camera>();
-        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
