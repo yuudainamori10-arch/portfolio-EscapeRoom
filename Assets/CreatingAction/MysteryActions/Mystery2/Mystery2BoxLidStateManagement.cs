@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class BoxLidStateManagement : MonoBehaviour, IResetInterface
+public class Mystery2BoxLidStateManagement : MonoBehaviour, IResetInterface
 {
-    public static BoxLidStateManagement boxLidStateManagementInstance;
+    public static Mystery2BoxLidStateManagement boxLidStateManagementInstance;
     Animator animator;
 
     private void Awake()

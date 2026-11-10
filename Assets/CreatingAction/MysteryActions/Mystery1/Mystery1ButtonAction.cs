@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonAction : MonoBehaviour
+public class Mystery1ButtonAction : MonoBehaviour
 {
     public ButtonType buttonType;
 
@@ -27,11 +27,11 @@ public class ButtonAction : MonoBehaviour
     public void OnVerificationButton(BaseEventData data)
     {
         string displayPassword = EscapeKeyBoxDisplay.keyBoxDisplayInstance.GetDisplayNumber();
-        bool openFlag = PasswordManagers.passwordInstance.PasswordCompatison(displayPassword);
+        bool openFlag = Mystery1Manager.passwordInstance.PasswordCompatison(displayPassword);
 
         if (openFlag)
         {
-            BoxLidStateManagement.boxLidStateManagementInstance.OpenLid();
+            Mystery1BoxLidStateManagement.boxLidStateManagementInstance.OpenLid();
         }
     }
 }

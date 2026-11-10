@@ -7,8 +7,6 @@ public class DrawerOpen : MonoBehaviour, IResetInterface
     Animator animator;
     private bool openDrawerFlag = false;
 
-    public Transform GetAnchor() => drawer;
-
     public void Start()
     {
         animator = GetComponent<Animator>();

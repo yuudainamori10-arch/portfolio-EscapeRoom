@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ZoomEndCamera : MonoBehaviour
+public class Mystery1ZoomEndCamera : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera zoomCamera;
     [SerializeField] private GameObject centerPoint;
+    [SerializeField] GameObject zoomButton;
     [SerializeField] GameObject zoomEndButton;
 
     public void ChangeMainCamera()
@@ -16,6 +17,7 @@ public class ZoomEndCamera : MonoBehaviour
             zoomCamera.gameObject.SetActive(false);
             mainCamera.gameObject.SetActive(true);
             centerPoint.SetActive(true);
+            zoomButton.SetActive(true);
             zoomEndButton.SetActive(false);
             CursorManager.cursorManagerInstance.HideCursor();
         }
