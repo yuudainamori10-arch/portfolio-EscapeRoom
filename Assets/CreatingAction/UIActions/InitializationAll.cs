@@ -61,11 +61,11 @@ public class InitializationAll : MonoBehaviour
             //脱出用のカギをしまった箱のダイヤルを初期化
             EscapeKeyBoxDisplay.keyBoxDisplayInstance.InitialzedObject();
 
-            //Mystery2：時計の時刻とメモボックスの暗証番号を作成（針の設定より先に呼ぶ）
+            //Mystery2：2つの時計の時刻・左右配置とメモボックスの暗証番号を作成（針の設定より先に呼ぶ）
             Mystery2Manager.passwordInstance.InitialzedObject();
 
-            //Mystery2：壁掛け時計の針を時刻に合わせる
-            WallClockSettings.wallClockInstance.InitialzedObject();
+            //Mystery2：左右の壁掛け時計の針を時刻・色に合わせる
+            WallClockSettings.InitializeAllClocks();
 
             //Mystery2：メモボックスのダイヤルを初期化
             Mystery2MemoBoxDisplay.keyBoxDisplayInstance.InitialzedObject();
